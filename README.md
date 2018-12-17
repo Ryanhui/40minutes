@@ -1,1 +1,1 @@
-40 minutes
+40 minute
