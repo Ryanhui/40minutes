@@ -2,9 +2,12 @@
   <div id="wrapper">
     <main>
       <div class="center">
+        <div class="setting">
+          <router-link to="/setting"><span class="dot"/></router-link>
+          <span class="minimzie" @click="mini"></span>
+        </div>
         <span class="title">
           Every 40 minutes
-          <router-link to="/setting">Go to Foo</router-link>
         </span>
       </div>
     </main>
@@ -14,37 +17,27 @@
 <script>
   import SystemInformation from './LandingPage/SystemInformation'
 
+  const {ipcRenderer} = require('electron')
+  
   export default {
     name: 'landing-page',
     components: { SystemInformation },
     methods: {
       open (link) {
         this.$electron.shell.openExternal(link)
+      },
+      mini () {
+        ipcRenderer.sendSync('synchronous-message', 'ping?????') // prints "pong"
       }
     }
   }
 </script>
 
 <style scoped>
-  @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
-
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-
-  body { font-family: 'Source Sans Pro', sans-serif; }
-
   #wrapper {
-    background:
-      radial-gradient(
-        ellipse at top left,
-        rgba(255, 255, 255, 1) 40%,
-        rgba(229, 229, 229, .9) 100%
-      );
+    background:#f3db41;
     height: 100vh;
-    padding: 60px 80px;
+    padding: 16px;
     width: 100vw;
   }
 
@@ -56,7 +49,35 @@
     text-align: center;
   }
 
+  .setting {
+    position: fixed;
+    top: 10px;
+    right: 20px;
+  }
+  
+  .setting a {
+    text-decoration: none;
+    color: #fff;
+  }
+
   .title {
     font-size: 18px;
+    color: rgb(0, 41, 58);
+  }
+
+  .dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 4px;
+    background: #fff;
+  }
+
+  .minimzie {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 4px;
+    background: red;
   }
 </style>

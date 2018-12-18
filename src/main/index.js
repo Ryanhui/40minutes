@@ -1,6 +1,6 @@
 'use strict'
 
-import { app, BrowserWindow } from 'electron'
+import { app, BrowserWindow, ipcMain } from 'electron'
 
 /**
  * Set `__static` path to static files in production
@@ -20,10 +20,10 @@ function createWindow () {
    * Initial window options
    */
   mainWindow = new BrowserWindow({
-    height: 563,
+    height: 500,
     useContentSize: true,
-    width: 1000
-    // frame: false
+    width: 300,
+    frame: false
   })
 
   mainWindow.loadURL(winURL)
@@ -32,6 +32,12 @@ function createWindow () {
     mainWindow = null
   })
 }
+
+ipcMain.on('synchronous-message', (event, arg) => {
+  console.log(arg) // prints "ping"
+  event.returnValue = 'pong'
+  mainWindow.minimize()
+})
 
 app.on('ready', createWindow)
 
