@@ -1,6 +1,6 @@
 'use strict'
 
-import { app, BrowserWindow, ipcMain } from 'electron'
+import { app, BrowserWindow, ipcMain, screen } from 'electron'
 
 /**
  * Set `__static` path to static files in production
@@ -10,7 +10,8 @@ if (process.env.NODE_ENV !== 'development') {
   global.__static = require('path').join(__dirname, '/static').replace(/\\/g, '\\\\')
 }
 
-let mainWindow
+let mainWindow, mainScreen, dimensions
+
 const winURL = process.env.NODE_ENV === 'development'
   ? `http://localhost:9080`
   : `file://${__dirname}/index.html`
@@ -26,6 +27,9 @@ function createWindow () {
     frame: false
   })
 
+  mainScreen = screen.getPrimaryDisplay()
+  dimensions = mainScreen.size
+
   mainWindow.loadURL(winURL)
 
   mainWindow.on('closed', () => {
@@ -33,10 +37,20 @@ function createWindow () {
   })
 }
 
-ipcMain.on('synchronous-message', (event, arg) => {
-  console.log(arg) // prints "ping"
-  event.returnValue = 'pong'
+ipcMain.on('mini', (event, arg) => {
   mainWindow.minimize()
+})
+ipcMain.on('max', (event, arg) => {
+  mainWindow.maximize()
+})
+ipcMain.on('close', (event, arg) => {
+  mainWindow.close()
+})
+ipcMain.on('setSize', (event, arg) => {
+  // set position to the middle of screen before set size. There is a center() function
+  // obviously, we should setSize() first then make it center, but an ugly moving will appear.
+  mainWindow.setPosition(dimensions.width / 2 - 150, dimensions.height / 2 - 250)
+  mainWindow.setSize(300, 500)
 })
 
 app.on('ready', createWindow)

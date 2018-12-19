@@ -4,7 +4,6 @@
       <div class="center">
         <div class="setting">
           <router-link to="/setting"><span class="dot"/></router-link>
-          <span class="minimzie" @click="mini"></span>
         </div>
         <span class="title">
           Every 40 minutes
@@ -16,20 +15,9 @@
 
 <script>
   import SystemInformation from './LandingPage/SystemInformation'
-
-  const {ipcRenderer} = require('electron')
-  
   export default {
     name: 'landing-page',
-    components: { SystemInformation },
-    methods: {
-      open (link) {
-        this.$electron.shell.openExternal(link)
-      },
-      mini () {
-        ipcRenderer.sendSync('synchronous-message', 'ping?????') // prints "pong"
-      }
-    }
+    components: { SystemInformation }
   }
 </script>
 
@@ -71,13 +59,5 @@
     height: 8px;
     border-radius: 4px;
     background: #fff;
-  }
-
-  .minimzie {
-    display: inline-block;
-    width: 8px;
-    height: 8px;
-    border-radius: 4px;
-    background: red;
   }
 </style>

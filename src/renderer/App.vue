@@ -1,5 +1,9 @@
 <template>
   <div id="app">
+    <div class="title-bar"></div>
+    <div class="close" @click="close"></div>
+    <div class="minimzie" @click="mini"></div>
+    <div class="maximzie" @click="resize"></div>
     <transition name="slide-fade">
       <router-view></router-view>
     </transition>
@@ -7,8 +11,32 @@
 </template>
 
 <script>
+  const {ipcRenderer} = require('electron')
+
   export default {
-    name: 'vue-electron'
+    name: 'vue-electron',
+    data: function () {
+      return {
+        maximize: false
+      }
+    },
+    methods: {
+      close () {
+        ipcRenderer.send('close')
+      },
+      mini () {
+        ipcRenderer.send('mini')
+      },
+      resize () {
+        if (this.maximize) {
+          ipcRenderer.send('setSize')
+          this.maximize = false
+        } else {
+          ipcRenderer.send('max')
+          this.maximize = true
+        }
+      }
+    }
   }
 </script>
 
@@ -23,6 +51,7 @@
     margin: 0;
     padding: 0;
   }
+
   #app {
     background:
       radial-gradient(
@@ -31,32 +60,57 @@
         rgba(255, 255, 255,1)100%
       );
   }
-.slide-fade-enter-active {
-  animation: bounce-in .3s;
-}
-/* .slide-fade-leave-active {
-  animation: bounce-out .5s;
-} */
-@keyframes bounce-in {
-  0% {
-    transform: scale(0);
+
+  .title-bar {
+    position: fixed;
+    top: 0;
+    height: 24px;
+    width: 100%;
+    -webkit-app-region: drag;
   }
-  50% {
-    transform: scale(0.5);
+
+  .slide-fade-enter-active {
+    animation: bounce-in .3s;
   }
-  100% {
-    transform: scale(1);
+
+  .close,
+  .minimzie,
+  .maximzie {
+    position: absolute;
+    cursor: pointer;
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+    -webkit-app-region: no-drag;
   }
-}
-@keyframes bounce-out {
-  0% {
-    transform: scale(1);
+
+  .close {
+    top: 10px;
+    left: 10px;
+    background: #ff5e4c;
   }
-  50% {
-    transform: scale(0.5);
+
+  .minimzie {
+    top: 10px;
+    left: 30px;
+    background: #fcbb00;
   }
-  100% {
-    transform: scale(0);
+
+  .maximzie {
+    top: 10px;
+    left: 50px;
+    background: #00ce26;
   }
-}
+
+  @keyframes bounce-in {
+    0% {
+      transform: scale(0);
+    }
+    50% {
+      transform: scale(0.5);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
 </style>
