@@ -15,13 +15,13 @@ export default {
 <style scoped>
   #wrapper {
     background:#00ffdd;
-    height: 100vh;
-    padding: 60px 80px;
     width: 100vw;
+    height: 100vh;
+    padding: 24px 16px 16px 16px;
   }
   .home {
     position: fixed;
-    top: 10px;
+    bottom: 20px;
     left: 20px;
   }
   .home a {
@@ -30,9 +30,9 @@ export default {
   }
   .dot {
     display: inline-block;
-    width: 8px;
-    height: 8px;
-    border-radius: 4px;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
     background: #fff;
   }
 </style>

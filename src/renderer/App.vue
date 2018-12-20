@@ -80,7 +80,7 @@
     cursor: pointer;
     width: 10px;
     height: 10px;
-    border-radius: 10px;
+    border-radius: 5px;
     -webkit-app-region: no-drag;
   }
 
