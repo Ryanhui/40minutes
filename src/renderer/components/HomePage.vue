@@ -1,15 +1,10 @@
 <template>
   <div id="wrapper">
-    <ul class="shapes">
-      <li class="shape1"></li>
-      <li class="shape2"></li>
-      <li class="shape3"></li>
-    </ul>
     <main>
       <div class="center">
         <span class="title">
-          Every 40 minutes
           <RenderShape title='1111'></RenderShape>
+          <Timer></Timer>
         </span>
       </div>
       <div class="setting">
@@ -21,10 +16,12 @@
 
 <script>
   import RenderShape from './RenderShape.vue'
+  import Timer from './Timer.vue'
   export default {
     name: 'landing-page',
     components: {
-      RenderShape
+      RenderShape,
+      Timer
     }
   }
 </script>
