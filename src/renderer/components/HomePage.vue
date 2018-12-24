@@ -10,6 +10,9 @@
       <div class="setting">
         <router-link to="/setting"><span class="dot"/></router-link>
       </div>
+      <button v-on:click="startCount">Start</button>
+      <button v-on:click="stopCount">Stop</button>
+      <button v-on:click="reset">Reset</button>
     </main>
   </div>
 </template>
@@ -17,11 +20,30 @@
 <script>
   import RenderShape from './RenderShape.vue'
   import Timer from './Timer.vue'
+  let clockTimer
   export default {
     name: 'landing-page',
     components: {
       RenderShape,
       Timer
+    },
+    methods: {
+      startCount () {
+        window.clearInterval(clockTimer)
+        clockTimer = window.setInterval(() => {
+          if (this.$store.state.Counter.main <= 0) {
+            window.clearInterval(clockTimer)
+            return
+          }
+          this.$store.dispatch('increment')
+        }, 1000)
+      },
+      stopCount () {
+        window.clearInterval(clockTimer)
+      },
+      reset () {
+        this.$store.dispatch('reset')
+      }
     }
   }
 </script>
