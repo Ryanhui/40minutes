@@ -1,5 +1,8 @@
 <template>
   <div id="wrapper">
+    <div>
+      setTime<input v-model='initTime'>
+    </div>
     <div class="home">
       <router-link to="/home"><span class="dot"/></router-link>
     </div>
@@ -8,7 +11,19 @@
 
 <script>
 export default {
-  name: 'setting-page'
+  name: 'setting-page',
+  computed: {
+    initTime: {
+      get: function () {
+        return this.$store.state.Counter.initTime / 60
+      },
+      set: function (initTime) {
+        this.$store.dispatch('setTime', {
+          initTime
+        })
+      }
+    }
+  }
 }
 </script>
 

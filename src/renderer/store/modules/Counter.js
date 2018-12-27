@@ -1,5 +1,6 @@
 const state = {
-  main: 2400
+  main: 2400,
+  initTime: 2400
 }
 
 const mutations = {
@@ -10,7 +11,10 @@ const mutations = {
     state.main++
   },
   RESET (state) {
-    state.main = 2400
+    state.main = state.initTime
+  },
+  SETTIME (state, initTime) {
+    state.initTime = Number(initTime) * 60
   }
 }
 
@@ -24,6 +28,9 @@ const actions = {
   },
   reset (state) {
     state.commit('RESET')
+  },
+  setTime (state, value) {
+    state.commit('SETTIME', value.initTime)
   }
 }
 
