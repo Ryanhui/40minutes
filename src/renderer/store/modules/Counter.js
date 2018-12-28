@@ -1,36 +1,29 @@
 const state = {
-  main: 2400,
+  time: 2400,
   initTime: 2400
 }
 
 const mutations = {
-  DECREMENT_MAIN_COUNTER (state) {
-    state.main--
-  },
-  INCREMENT_MAIN_COUNTER (state) {
-    state.main++
+  DECREMENT_TIME_COUNTER (state) {
+    state.time--
   },
   RESET (state) {
-    state.main = state.initTime
+    state.time = state.initTime
   },
-  SETTIME (state, initTime) {
+  SET_TIME (state, initTime) {
     state.initTime = Number(initTime) * 60
   }
 }
 
 const actions = {
-  someAsyncTask ({ commit }) {
-    // do something async
-    commit('DECREMENT_MAIN_COUNTER')
-  },
-  increment (context) {
-    context.commit('DECREMENT_MAIN_COUNTER')
+  startCount (context) {
+    context.commit('DECREMENT_TIME_COUNTER')
   },
   reset (state) {
     state.commit('RESET')
   },
   setTime (state, value) {
-    state.commit('SETTIME', value.initTime)
+    state.commit('SET_TIME', value.initTime)
   }
 }
 

@@ -31,11 +31,11 @@
       startCount () {
         window.clearInterval(clockTimer)
         clockTimer = window.setInterval(() => {
-          if (this.$store.state.Counter.main <= 0) {
+          if (this.$store.state.Counter.time <= 0) {
             window.clearInterval(clockTimer)
             return
           }
-          this.$store.dispatch('increment')
+          this.$store.dispatch('startCount')
         }, 1000)
       },
       stopCount () {
