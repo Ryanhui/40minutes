@@ -3,7 +3,7 @@
     <main>
       <div class="center">
         <span class="title">
-          <RenderShape title='1111'></RenderShape>
+          <RenderShape title='renderShapes'></RenderShape>
           <Timer></Timer>
         </span>
       </div>
