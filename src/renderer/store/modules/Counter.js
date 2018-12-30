@@ -1,6 +1,8 @@
 const state = {
   time: 2400,
-  initTime: 2400
+  initTime: 2400,
+  title: 'oh man',
+  body: 'yes it is'
 }
 
 const mutations = {
@@ -12,6 +14,12 @@ const mutations = {
   },
   SET_TIME (state, initTime) {
     state.initTime = Number(initTime) * 60
+  },
+  SET_BODY (state, body) {
+    state.body = body
+  },
+  SET_TITLE (state, title) {
+    state.title = title
   }
 }
 
@@ -24,6 +32,12 @@ const actions = {
   },
   setTime (state, value) {
     state.commit('SET_TIME', value.initTime)
+  },
+  setBody (state, value) {
+    state.commit('SET_BODY', value.body)
+  },
+  setTitle (state, value) {
+    state.commit('SET_TITLE', value.title)
   }
 }
 

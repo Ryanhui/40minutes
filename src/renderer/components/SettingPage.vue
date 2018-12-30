@@ -2,6 +2,8 @@
   <div id="wrapper">
     <div>
       setTime<input v-model='initTime'>
+      title<input v-model="title">
+      body<input v-model="body">
     </div>
     <div class="home">
       <router-link to="/home"><span class="dot"/></router-link>
@@ -20,6 +22,26 @@ export default {
       set: function (initTime) {
         this.$store.dispatch('setTime', {
           initTime
+        })
+      }
+    },
+    title: {
+      get: function () {
+        return this.$store.state.Counter.title
+      },
+      set: function (title) {
+        this.$store.dispatch('setTitle', {
+          title
+        })
+      }
+    },
+    body: {
+      get: function () {
+        return this.$store.state.Counter.body
+      },
+      set: function (body) {
+        this.$store.dispatch('setBody', {
+          body
         })
       }
     }
