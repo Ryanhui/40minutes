@@ -12,6 +12,7 @@ export default {
       let time = this.$store.state.Counter.time / 60
       // return `${Math.floor(time)} 分钟 ${((time - Math.floor(time)) * 60).toFixed()} 秒`
       return {
+        time,
         minutes: String(Math.floor(time)),
         seconds: ((time - Math.floor(time)) * 60).toFixed()
       }
