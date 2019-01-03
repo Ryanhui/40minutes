@@ -24,7 +24,10 @@ function createWindow () {
     height: 500,
     useContentSize: true,
     width: 300,
-    frame: false
+    frame: false,
+    webPreferences: {
+      backgroundThrottling: false
+    }
   })
 
   mainScreen = screen.getPrimaryDisplay()
