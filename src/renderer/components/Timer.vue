@@ -1,21 +1,31 @@
 <template>
-  <div>{{ count.minutes }} 分钟 {{ count.seconds }} 秒</div>
+  <div>
+    {{ count.minutes }} 分钟 {{ count.seconds }} 秒
+    <canvas width="200" height="200" v-insert-time="count"/>
+  </div>
 </template>
 
 <script>
-// const {ipcRenderer} = require('electron')
 
 export default {
   name: 'timer',
   computed: {
     count () {
       let time = this.$store.state.Counter.time / 60
-      // return `${Math.floor(time)} 分钟 ${((time - Math.floor(time)) * 60).toFixed()} 秒`
       return {
         time,
-        minutes: String(Math.floor(time)),
-        seconds: ((time - Math.floor(time)) * 60).toFixed()
+        minutes: Math.floor(time),
+        seconds: Number(((time - Math.floor(time)) * 60).toFixed())
       }
+    }
+  },
+  directives: {
+    insertTime: function (canvasElement, binding) {
+      let ctx = canvasElement.getContext('2d')
+      ctx.clearRect(0, 0, 300, 150)
+      ctx.fillStyle = 'black'
+      console.log(binding)
+      ctx.fillRect(50, 50, binding.value.time * 1000, binding.value.time * 1000)
     }
   },
   watch: {
