@@ -22,7 +22,7 @@
   import Timer from './Timer.vue'
   let clockTimer
   export default {
-    name: 'landing-page',
+    name: 'home-page',
     components: {
       RenderShape,
       Timer
