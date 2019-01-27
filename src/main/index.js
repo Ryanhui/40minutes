@@ -1,6 +1,6 @@
 'use strict'
 
-import { app, BrowserWindow, ipcMain, screen, Notification } from 'electron'
+import { app, BrowserWindow, ipcMain, screen } from 'electron'
 
 /**
  * Set `__static` path to static files in production
@@ -38,16 +38,6 @@ function createWindow () {
   mainWindow.on('closed', () => {
     mainWindow = null
   })
-
-  setInterval(() => {
-    app.setAppUserModelId('com.example.yourapp')
-    let nt = new Notification({
-      title: 'test',
-      body: 'body'
-    })
-    nt.show()
-    console.log('Notification show.')
-  }, 3000)
 }
 
 ipcMain.on('mini', (event, arg) => {

@@ -51,7 +51,7 @@ export default {
 
 <style scoped>
   #wrapper {
-    background:#00ffdd;
+    background:rgb(12, 68, 133);
     width: 100vw;
     height: 100vh;
     padding: 24px 16px 16px 16px;

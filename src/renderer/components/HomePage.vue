@@ -10,7 +10,7 @@
       <div class="setting">
         <router-link to="/setting"><span class="dot"/></router-link>
       </div>
-      <button v-on:click="startCount">Start</button>
+      <button v-on:click="startCount" class="start"></button>
       <button v-on:click="stopCount">Stop</button>
       <button v-on:click="reset">Reset</button>
     </main>
@@ -20,6 +20,7 @@
 <script>
   import RenderShape from './RenderShape.vue'
   import Timer from './Timer.vue'
+  
   let clockTimer
   export default {
     name: 'home-page',
@@ -126,5 +127,11 @@
     position: relative;
     left: 134px;
     top: 150px;
+  }
+
+  .start {
+    width: 50px;
+    height: 50px;
+    border: none;
   }
 </style>
