@@ -27,10 +27,9 @@ export default {
       ctx.strokeStyle = 'rgb(205,19,25)'
       ctx.lineCap = 'round'
       ctx.lineWidth = 8
-      ctx.clearRect(0, 0, 200, 200)
-      console.log(binding.value)
       if (binding.value.time !== 0) {
         // draw circle of time
+        ctx.clearRect(0, 0, 200, 200)
         ctx.beginPath()
         ctx.arc(100, 100, 70, 0 - Math.PI / 2, Math.PI * 2 * progress - Math.PI / 2, false)
         ctx.stroke()
@@ -80,7 +79,7 @@ export default {
             window.requestAnimationFrame(drawCricle)
           }
         }
-        drawLine()
+        window.setTimeout(drawLine, 200)
       }
     }
   },

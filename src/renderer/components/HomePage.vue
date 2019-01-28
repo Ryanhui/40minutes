@@ -10,9 +10,15 @@
       <div class="setting">
         <router-link to="/setting"><span class="dot"/></router-link>
       </div>
-      <button v-on:click="startCount" class="start"></button>
-      <button v-on:click="stopCount">Stop</button>
-      <button v-on:click="reset">Reset</button>
+      <button v-on:click="startCount" class="start">
+        <svgicon name="play" width="50" height="50" color="#42b983"></svgicon>
+      </button>
+      <button v-on:click="stopCount" class="pause">
+        <svgicon name="pause" width="50" height="50" color="#42b983"></svgicon>
+      </button>
+      <button v-on:click="reset" class="refresh">
+        <svgicon name="refresh" width="50" height="50" color="#42b983"></svgicon>
+      </button>
     </main>
   </div>
 </template>
@@ -20,7 +26,8 @@
 <script>
   import RenderShape from './RenderShape.vue'
   import Timer from './Timer.vue'
-  
+  import '../icon'
+
   let clockTimer
   export default {
     name: 'home-page',
@@ -129,9 +136,12 @@
     top: 150px;
   }
 
-  .start {
+  .start,
+  .pause,
+  .refresh {
     width: 50px;
     height: 50px;
     border: none;
+    background: inherit;
   }
 </style>
