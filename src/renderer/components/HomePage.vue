@@ -10,14 +10,14 @@
       <div class="setting">
         <router-link to="/setting"><span class="dot"/></router-link>
       </div>
-      <button v-on:click="startCount" class="start">
-        <svgicon name="play" width="50" height="50" color="#42b983"></svgicon>
-      </button>
       <button v-on:click="stopCount" class="pause">
-        <svgicon name="pause" width="50" height="50" color="#42b983"></svgicon>
+        <svgicon name="pause" width="24" height="24" color="#fff" class="pauseIcon"></svgicon>
+      </button>
+      <button v-on:click="startCount" class="start">
+        <svgicon name="play" width="24" height="24" color="#fff"></svgicon>
       </button>
       <button v-on:click="reset" class="refresh">
-        <svgicon name="refresh" width="50" height="50" color="#42b983"></svgicon>
+        <svgicon name="refresh" width="24" height="24" color="#fff" class="refreshIcon"></svgicon>
       </button>
     </main>
   </div>
@@ -74,6 +74,7 @@
 
   .center {
     z-index: 2;
+    margin-top: -30vh;
   }
 
   .setting {
@@ -139,9 +140,44 @@
   .start,
   .pause,
   .refresh {
+    position: fixed;
     width: 50px;
     height: 50px;
     border: none;
+    cursor: pointer;
+  }
+
+  .pause {
+    right: 0;
+    top: 55vh;
+    height: 80px;
+    width: 40px;
+    border-bottom-left-radius: 80px;
+    border-top-left-radius: 80px;
+    background: #FF8811;
+  }
+  .start{
+    bottom: 0;
+    right: 50vw;
+    background: #9DD9D2;
+  }
+  .refresh {
+    left: 0;
+    top: 65vh;
     background: inherit;
+    width: 0; 
+    height: 0; 
+    border-top: 35px solid transparent;
+    border-bottom: 35px solid transparent;
+    border-left: 50px solid #59CD90;
+  }
+
+  .pauseIcon {
+    margin-left: 5px;
+  }
+  .refreshIcon {
+    position: relative;
+    top: -12px;
+    left: -45px;
   }
 </style>
