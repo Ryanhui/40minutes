@@ -147,14 +147,24 @@
     cursor: pointer;
   }
 
-  .pause {
+  /* .pause {
     right: 0;
     top: 55vh;
     height: 80px;
-    width: 40px;
+    width: 50px;
     border-bottom-left-radius: 80px;
     border-top-left-radius: 80px;
     background: #FF8811;
+  } */
+  .pause {
+    right: 0;
+    top: 55vh;
+    background: inherit;
+    width: 0; 
+    height: 0; 
+    border-top: 45px solid transparent;
+    border-bottom: 45px solid transparent;
+    border-right: 70px solid #FF8811;
   }
   .start{
     bottom: 0;
@@ -173,7 +183,8 @@
   }
 
   .pauseIcon {
-    margin-left: 5px;
+    margin-top: -10px;
+    margin-left: 35px;
   }
   .refreshIcon {
     position: relative;
