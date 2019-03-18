@@ -53,12 +53,7 @@
   }
 
   #app {
-    background:
-      radial-gradient(
-        ellipse at top left,
-        rgba(229, 229, 229,0.9) 40%,
-        rgba(255, 255, 255,1)100%
-      );
+    background: transparent;
   }
 
   .title-bar {

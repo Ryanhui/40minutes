@@ -1,6 +1,9 @@
 <template>
   <div id="wrapper">
-    <main>
+    <div class="animateBackground">
+      <AnimateBackground />
+    </div>
+    <main class="main">
       <div class="center">
         <span class="title">
           <RenderShape title='renderShapes'></RenderShape>
@@ -26,6 +29,7 @@
 <script>
   import RenderShape from './RenderShape.vue'
   import Timer from './Timer.vue'
+  import AnimateBackground from './AnimateBackground.vue'
   import '../icon'
 
   let clockTimer
@@ -33,7 +37,8 @@
     name: 'home-page',
     components: {
       RenderShape,
-      Timer
+      Timer,
+      AnimateBackground
     },
     methods: {
       startCount () {
@@ -58,7 +63,7 @@
 
 <style scoped>
   #wrapper {
-    background:#f3db41;
+    background: transparent;
     width: 100vw;
     height: 100vh;
     padding: 24px 16px 16px 16px;
@@ -190,5 +195,20 @@
     position: relative;
     top: -12px;
     left: -45px;
+  }
+
+  .main{
+    z-index: 100;
+  }
+  .animateBackground {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #f3db41;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    z-index: -10;
   }
 </style>
