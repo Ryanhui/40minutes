@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- {{ count.minutes }} 分钟 {{ count.seconds }} 秒 -->
-    <canvas width="200" height="200" v-insert-time="count"/>
+    <canvas width="200" height="200" class="canvas" v-insert-time="count"/>
   </div>
 </template>
 
@@ -97,3 +97,10 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .canvas {
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 100px;
+  }
+</style>

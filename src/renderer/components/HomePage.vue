@@ -69,6 +69,10 @@
     padding: 24px 16px 16px 16px;
   }
 
+  button {
+    outline: none;
+  }
+  
   main {
     height: 100%;
     display: flex;
