@@ -44,7 +44,7 @@
   /* CSS */
   @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
 
-  body { font-family: 'Source Sans Pro', sans-serif; }
+  body { font-family: Avenir,-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Helvetica,Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol',sans-serif; }
 
   * {
     box-sizing: border-box;

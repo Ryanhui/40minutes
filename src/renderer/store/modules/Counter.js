@@ -2,7 +2,8 @@ const state = {
   time: 2400,
   initTime: 2400,
   title: 'oh man',
-  body: 'yes it is'
+  body: 'yes it is',
+  language: 'chinese'
 }
 
 const mutations = {
@@ -20,6 +21,10 @@ const mutations = {
   },
   SET_TITLE (state, title) {
     state.title = title
+  },
+  SET_LANGAUAGE (state, language) {
+    state.language = language
+    console.log(language)
   }
 }
 
@@ -38,6 +43,9 @@ const actions = {
   },
   setTitle (state, value) {
     state.commit('SET_TITLE', value.title)
+  },
+  setLangauage (state, value) {
+    state.commit('SET_LANGAUAGE', value)
   }
 }
 

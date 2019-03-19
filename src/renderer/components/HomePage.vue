@@ -7,7 +7,7 @@
       <div class="center">
         <span class="title">
           <RenderShape title='renderShapes'></RenderShape>
-          <Timer></Timer>
+          <Timer v-on:stopCount="stopCount"></Timer>
         </span>
       </div>
       <div class="setting">

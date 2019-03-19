@@ -59,6 +59,7 @@ export default {
             drawCricle()
           }
         }
+
         // draw a new circle after then line has showed
         let drawCricle = function () {
           let ctx = canvasElement.getContext('2d')
@@ -89,6 +90,8 @@ export default {
         let timeNotification = new Notification(this.$store.state.Counter.title, {
           body: this.$store.state.Counter.body
         })
+        this.$store.dispatch('reset')
+        this.$emit('stopCount')
         timeNotification.onclick = () => {
           console.log('Notification clicked')
         }

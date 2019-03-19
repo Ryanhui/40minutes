@@ -2,24 +2,27 @@
   <div id="wrapper">
     <div>
       <div class="item">
-        <p class="name">设置时间</p>
+        <p class="name">{{this.language === 'chinese' ? '设置时间' : 'set time'}}</p>
         <div class="inputWrapper" style="display: flex">
           <input v-model='initTime' class="input" style="flex: 10">
-          <span style="fontSize: 12px; flex: 2; lineHeight: 30px;textAlign: center">分钟</span>
+          <span style="fontSize: 12px; flex: 2; lineHeight: 30px;textAlign: center">{{this.language === 'chinese' ? '分钟' : 'mins'}}</span>
         </div>
       </div>
       <div class="item">
-        <p class="name">标题</p>
+        <p class="name">{{this.language === 'chinese' ? '标题' : 'title'}}</p>
         <div class="inputWrapper">
           <input v-model="title" class="input">
         </div>
       </div>
       <div class="item">
-        <p class="name">内容</p>
+        <p class="name">{{this.language === 'chinese' ? '内容' : 'content'}}</p>
         <div class="inputWrapper">
           <input v-model="body" class="input">
         </div>
       </div>
+    </div>
+    <div class="language">
+      <span v-on:click="setLanauage('chinese')">中文</span> | <span v-on:click="setLanauage('english')">Eng</span>
     </div>
     <div class="home">
       <router-link to="/home"><span class="dot"/></router-link>
@@ -30,6 +33,11 @@
 <script>
 export default {
   name: 'setting-page',
+  data: function () {
+    return {
+      language: this.$store.state.Counter.language
+    }
+  },
   computed: {
     initTime: {
       get: function () {
@@ -60,6 +68,12 @@ export default {
           body
         })
       }
+    }
+  },
+  methods: {
+    setLanauage: function (value) {
+      this.$store.dispatch('setLangauage', value)
+      this.language = value
     }
   }
 }
@@ -102,7 +116,7 @@ export default {
   }
   .name {
     padding-left: 4px;
-    font-size: 12px;
+    font-size: 14px;
   }
   .input {
     width: 100%;
@@ -112,6 +126,12 @@ export default {
     border: none;
     border-radius: 3px;
     color: #383838;
+  }
+  .language {
+    font-size: 14px;
+    text-align: center;
+    margin-top: 36px;
+    cursor: pointer;
   }
 </style>
 

@@ -42,14 +42,14 @@ export default {
       for (let i = 0; i < 50; i++) {
         let position = getRandomPosition(ctxWidth, ctxHeight)
         let ran = Math.random()
-        if (ran > 0.3) {
+        if (ran > 0 && ran < 0.3) {
           ctx.beginPath()
           ctx.fillStyle = colors[getRandomNumber(0, colors.length - 1)]
           ctx.moveTo(position.x, position.y)
           ctx.lineTo(position.x - 6, position.y + 12)
           ctx.lineTo(position.x + 6, position.y + 12)
           ctx.fill()
-        } else if (ran > 0.6) {
+        } else if (ran > 0.3 && ran < 0.8) {
           ctx.beginPath()
           ctx.fillStyle = colors[getRandomNumber(0, colors.length - 1)]
           ctx.moveTo(position.x, position.y)
@@ -58,7 +58,7 @@ export default {
           ctx.lineTo(position.x, position.y + 12)
           ctx.lineTo(position.x, position.y)
           ctx.fill()
-        } else {
+        } else if (ran > 0.8) {
           ctx.arc(position.x, position.y, 6, 0, Math.PI * 2)
           ctx.fillStyle = colors[getRandomNumber(0, colors.length - 1)]
           ctx.fill()
