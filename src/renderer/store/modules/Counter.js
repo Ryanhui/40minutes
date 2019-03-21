@@ -24,7 +24,6 @@ const mutations = {
   },
   SET_LANGAUAGE (state, language) {
     state.language = language
-    console.log(language)
   }
 }
 

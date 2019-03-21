@@ -90,6 +90,10 @@ export default {
         let timeNotification = new Notification(this.$store.state.Counter.title, {
           body: this.$store.state.Counter.body
         })
+        // Notification.requestPermission(function (status) {
+        //   console.log(status)
+        //   new Notification("title", {body: "notification body"})
+        // })
         this.$store.dispatch('reset')
         this.$emit('stopCount')
         timeNotification.onclick = () => {
@@ -103,7 +107,7 @@ export default {
 
 <style scoped>
   .canvas {
-    background: rgba(0, 0, 0, 0.15);
+    background: rgba(0, 0, 0, 0.25); 
     border-radius: 100px;
   }
 </style>
